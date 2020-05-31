@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File Upload</title>
+</head>
+<body>
+{% extends "reference_reading/base.html" %}
+{% block content %}
+    <p>Add a new file</p>
+
+    <form action="{% url 'reference_reading:new_file' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %} <!---malware protection--->
+        {{ form.as_p }}
+        <button name="submit" >Add File</button>
+    </form>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {%endfor%}
+        </ul>
+    {% endif %}
+
+{% endblock content %}
+</body>
+</html>

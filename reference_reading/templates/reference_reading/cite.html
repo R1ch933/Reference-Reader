@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Citations</title>
+</head>
+<style>
+.floated {
+    float:left;
+    margin-right:5px;
+    margin-bottom:5px;
+}
+</style>
+{% extends 'reference_reading/base.html' %}
+{%block page_header%}
+    <h1>{{files}}</h1>
+    <p>File: {{files.name.name}}</p>
+
+{%endblock page_header %}
+
+{% block content %}
+    {% for references in ref %}
+    <li><p>{{references}}</p></li>
+    {% empty %}
+    <p>No References Found</p>
+    {% endfor %}
+    <hr>
+    <form class="floated" action="{% url 'reference_reading:downloading' files.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Download file">
+    </form>
+
+    <form style="float: right;" class="floated" action="{% url 'reference_reading:delete' files.id %}" method="post">
+        {% csrf_token %}
+        <input style="float: right" type="submit" value="Delete file">
+    </form>
+    </hr>
+
+{% endblock content %}
+</body>
+</html>

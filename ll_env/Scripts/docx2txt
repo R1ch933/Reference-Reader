@@ -1,0 +1,10 @@
+#!C:\Users\rich\Desktop\reference reader\ll_env\Scripts\python.exe
+
+import docxpy
+
+
+if __name__ == '__main__':
+    args = docxpy.process_args()
+    text = docxpy.process(args.docx, args.img_dir)
+    print(text.encode('utf-8'))
+

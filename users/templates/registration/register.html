@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+</head>
+<body>
+{% extends "reference_reading/base.html" %}
+{% block content %}
+
+<form method = "post" action="{% url 'users:register' %}">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button name="submit">Register</button>
+    <input type="hidden" name="next" value="{% url 'reference_reading:index' %}" />
+{% endblock content %}
+
+</body>
+</html>

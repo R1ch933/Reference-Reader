@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load bootstrap4 %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial scale=1, shrink-to-fit=no">
+    <title>Reference Reader</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+</head>
+<style>
+.option_variant::after{content:'';display:block;width:0px;height:2px;background:#fec400;transition: 0.2s;}
+.option_variant:hover::after{width:95%;}
+.option_variant {
+    transition:0.2s;
+.nav-item.active, .nav-item:active{color:#212529;}
+.nav-item:focus, .nav-item:hover{background:#fec400;}
+}
+</style>
+<body>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <nav class="navbar navbar-expand-md navbar-light bg-dark mb-4 border">
+
+        <a style='color:white' class="navbar-brand" href="{% url 'reference_reading:index' %}">Reference Media</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                aria-expanded="false" aria-label="Toggle-navigation">
+            <span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item option_variant">
+                    <a style='color:white' class="nav-link" href="{% url 'reference_reading:files'%}">
+                        <i class="fas fa-file" style="padding-right: 2px;"></i> Files</a>
+                </li>
+                <li class="nav-item option_variant">
+                    <a style="color:white" class="nav-link" href="{% url 'reference_reading:new_file'%}">
+                        <i style="padding-right: 2px;" class="fas fa-plus"></i>Add File</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li style="padding-right: 5px;">
+                        <span style='color:white'class="navbar-text">You are logged in as {{user.username}}</span>
+                    </li>
+                    <li class="nav-item">
+                        <a style='color:white' class="nav-link" href="{% url 'users:logout' %}">Log out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a style='color:white' class="nav-link" href="{% url 'users:register' %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style='color:white' class="nav-link" href="{% url 'users:login' %}">Log in</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+        <div class="pb-2 mb-2 border-bottom">
+            {% block page_header %}{% endblock page_header %}
+        </div>
+        <div>
+            {% block content %}{% endblock content %}
+        </div>
+    </main>
+
+
+</body>
+</html>

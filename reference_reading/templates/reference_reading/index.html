@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reference Media</title>
+</head>
+<style>
+.jumbotron {
+    background-image: url('http://9a2e1a2047765d2a004e-e6d2db425d8d4f2619e5cee56a48bcef.r55.cf2.rackcdn.com/clouds.png');
+    background-size: cover;
+}
+</style>
+<body>
+{% extends "reference_reading/base.html" %}
+{% block content %}
+    <div class="jumbotron">
+        <h1 class="display-3">Track your MLA references</h1>
+        <p class="lead">Upload a Word Document to obtain citations!</p>
+        {% if request.user.is_authenticated %}
+            <a class="btn btn-lg btn-primary" href="{% url 'reference_reading:files' %}"
+           role="button">Go to files &raquo;</a>
+        {% else %}
+            <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+           role="button">Register &raquo;</a>
+        {% endif %}
+
+    </div>
+{% endblock content %}
+
+</body>
+</html>

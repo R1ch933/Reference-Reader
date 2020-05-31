@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Files</title>
+</head>
+<style>
+.file_entry:hover {
+    color: #707070;
+}
+.file_entry {
+    color: black;
+}
+</style>
+<body>
+{%extends "reference_reading/base.html "%}
+{%block page_header%}
+    <h1>Files
+        <a style="text-decoration: none; float: right;" href="{% url 'reference_reading:new_file' %}">
+            <i style="padding: 10px; color: green;" class="fas fa-plus"></i>Add a new file
+        </a>
+    </h1>
+{%endblock page_header %}
+{% block content %}
+    {% for files in file %}
+        <h3 style="border-bottom:1px solid rgba(0, 0, 0, .15); background-clip: padding-box;">
+            <a style="text-decoration: none;" class="file_entry" href="{% url 'reference_reading:cite' files.id %}">{{files}}</a>
+            <p style="font-size:12px;">{{files.date_added}}</p>
+        </h3>
+    {% empty %}
+        <li><h3>No files have been added yet</h3></li>
+    {% endfor %}
+{% endblock content %}
+
+</body>
+</html>
