@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
+from docx import exceptions
 import docx
 from django.contrib import messages
 import googlesearch
