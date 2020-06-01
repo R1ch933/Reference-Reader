@@ -6,12 +6,13 @@ dj-database-url==0.5.0
 Django==3.0.6
 django-bootstrap4==1.1.1
 django-heroku==0.3.1
-docx==0.2.4
 docxpy==0.8.5
+google==2.0.3
 gunicorn==20.0.4
 lxml==4.5.1
 Pillow==7.1.2
 psycopg2==2.8.5
+python-docx==0.8.10
 pytz==2020.1
 soupsieve==2.0.1
 sqlparse==0.3.1
